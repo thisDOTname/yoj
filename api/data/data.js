@@ -1,5 +1,5 @@
 var mysql = require('mysql')
-const DB = mysql.createDB({
+const DB = mysql.createConnection({
   host: 'localhost',
   user: 'root',
   password: 'helloworld',

@@ -73,6 +73,10 @@ connection.query('SELECT * FROM bar', function (error, results, fields) {
 })
 connection.end()*/
 
+var schemaScript = require('../auto_scripts/schema')
+
+console.log(' *** schemaScript --> ', schemaScript)
+schemaScript.migrate()
 var routes = require('../api/data/routes')
 app.use('/api', routes)
 
