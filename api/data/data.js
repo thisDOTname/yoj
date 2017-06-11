@@ -8,7 +8,6 @@ const DB = mysql.createConnection({
 
 module.exports = {
   getRecords : function (req, res) {
-    DB.connect()
     DB.query('SELECT * FROM bar', function (error, results, fields) {
       if (error) throw error
       console.log('DB RESPONSE :: ', typeof(results[0]), results)
@@ -17,7 +16,5 @@ module.exports = {
       })
       res.send(results)
     })
-    console.log(' ##### CLOSING DB')
-    DB.end()
   }
 }

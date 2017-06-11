@@ -1,3 +1,5 @@
+@import 'https://fonts.googleapis.com/icon?family=Material+Icons';
+
 .primary-color {
     background-color: #4CB5F5;
 }
@@ -12,4 +14,35 @@
 
 .accent-text-color {
     color: #FF420E;
+}
+
+section#out--section.fixed--section {
+    overflow: hidden;
+}
+
+section#out--section {
+	background: #FFFFFF;
+	position: relative;
+	width: 100%;
+	height: 100vh;
+}
+
+section#out--section > header {
+	position: absolute;
+	z-index: 10;
+	width: 100%;
+	height: 100px;
+	text-align: center;
+}
+
+section#out--section header > h1, h4 {
+    position: initial;
+    font-size: 1.5rem;
+    font-weight: 500;
+    letter-spacing: .4em;
+    margin-top: 20px;
+}
+
+section#out--section header > h4 {
+    font-size: 1rem;
 }

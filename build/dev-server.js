@@ -26,58 +26,26 @@ var app = express()
 var compiler = webpack(webpackConfig)
 
 var assert = require('assert')
+var bodyParser = require('body-parser')
 
-/*var findRestaurants
+app.use( bodyParser.json() )       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+}))
 
-var MongoClient = require('mongodb').MongoClient
-var ObjectId = require('mongodb').ObjectID
-var format = require('util').format
-MongoClient.connect('mongodb://thisDOTnameDB:0ld.Traff0rd@tdn-cluster0-shard-00-00-42p2h.mongodb.net:27017,tdn-cluster0-shard-00-01-42p2h.mongodb.net:27017,tdn-cluster0-shard-00-02-42p2h.mongodb.net:27017/<DATABASE>?ssl=true&replicaSet=tDn-cluster0-shard-0&authSource=admin', function (err, db) {
-    if (err) {
-    console.log(' err --> ', err)
-        throw err;
-    } else {
-        console.log("successfully connected to the database");
-    }
-    findRestaurants = function(callback) {
-      var cursor =db.collection('restaurants').find( );
-      cursor.each(function(err, doc) {
-          assert.equal(err, null);
-          if (doc != null) {
-            console.dir(doc);
-          } else {
-            callback();
-          }
-      });
-    };
+let usersSchemaScript = require('../auto_scripts/schema/users')
+let orgsSchemaScript = require('../auto_scripts/schema/orgs')
 
-    //db.close();
-});*/
+usersSchemaScript.migrate()
+orgsSchemaScript.migrate()
 
+let authRoutes = require('../api/auth/routes')
+app.use('/api', authRoutes)
 
-/*var mysql = require('mysql')
-var connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'root',
-  password: 'helloworld',
-  database: 'foo'
-})
+let orgRoutes = require('../api/data/orgs/routes')
+app.use('/api', orgRoutes)
 
-connection.connect()
-connection.query('SELECT * FROM bar', function (error, results, fields) {
-  if (error) throw error
-  console.log('DB RESPONSE :: ', typeof(results[0]), results)
-  results.forEach(function(row) {
-    console.log(' *** ROW --> ', row, row.toast)
-  })
-})
-connection.end()*/
-
-var schemaScript = require('../auto_scripts/schema')
-
-console.log(' *** schemaScript --> ', schemaScript)
-schemaScript.migrate()
-var routes = require('../api/data/routes')
+let routes = require('../api/data/routes')
 app.use('/api', routes)
 
 

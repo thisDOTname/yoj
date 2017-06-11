@@ -1,10 +1,10 @@
 <template>
 <div>
-<section id="lg--section">
+<section id="out--section" class="fixed--section">
     <div class="lg--bottom-triangle primary-color"></div>
 	<!-- // HEADER -->
     <header class="primary-text-color">
-        <h1 class="accent-text-color">WELCOME TO YOJNA</h1>
+        <h1 class="accent-text-color">YOJNA</h1>
         <h4 class="accent-text-color">PLAN YOUR PROJECTS</h4>
 
         <div class="wrapper">
