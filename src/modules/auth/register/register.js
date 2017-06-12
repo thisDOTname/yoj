@@ -1,4 +1,4 @@
-import auth from '../../wrapper/auth'
+import auth from '../../../wrapper/auth'
 
 export default {
   name: 'Register',
@@ -6,6 +6,8 @@ export default {
     return {
       registerStep: 1,
       hidePassword: true,
+      addUserSuccess: false,
+      addUserFailure: false,
       u: {
           fName: '',
           lName: '',
@@ -24,31 +26,44 @@ export default {
   methods: {
     verifyEmail: function () {
       var vm  = this
-      console.log('PASSOWRD VALIDATION :- ', /^[a-zA-Z0-9]{8,15}$/.test(vm.u.password))
       var isValidPassword = /^[a-zA-Z0-9]{8,15}$/.test(vm.u.password)
       if (isValidPassword) {
         auth.methods.validateRegisterEmail(vm, vm.u.email)
         .then(function(resp) {
-          console.log(' VALID EMAIL')
           vm.registerStep++
         })
         .catch(function(e) {
           console.log(' ERROR e --> ', e)
+          vm.registerStep = 4
+          vm.addUserSuccess = false
+          vm.addUserFailure = true
         })
+      } else {
+        alert(' Please enter a valid password ')
       }
     },
     addOrganisation: function () {
       var vm = this
-      vm.org.created_by = vm.u.email
       vm.registerStep++
-      /*auth.methods.addOrganisation(vm, vm.org)
-      .then(function(resp) {
-        vm.u.organisation = resp.org_id
+    },
+    createUser: function () {
+      var vm = this
+      var userData = {
+        'user': vm.u,
+        'org': vm.org
+      }
+      auth.methods.createUser(vm, userData)
+      .then(function (resp) {
         vm.registerStep++
+        vm.addUserSuccess = true
+        vm.addUserFailure = false
       })
-      .catch(function(e) {
-        console.log('ADD ORG ERROR :-> ', e)
-      })*/
+      .catch(function (e) {
+        console.log(' createUser ERROR RESP :-> ', e)
+        vm.registerStep++
+        vm.addUserSuccess = false
+        vm.addUserFailure = true
+      })
     }
   }
 }

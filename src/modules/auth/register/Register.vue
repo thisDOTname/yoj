@@ -7,8 +7,8 @@
         <h4 class="accent-text-color">PLAN YOUR PROJECTS</h4>
 
         <div class="rg--wrapper mt-5">
-            <div class="rg-container">
-                <div class="rg-content-heading accent-text-color">
+            <div class="rg--container">
+                <div class="rg--content-heading accent-text-color">
                     Get started with YOJANA
                 </div>
                 <v-stepper v-model="registerStep" vertical>
@@ -94,10 +94,12 @@
                     </v-stepper-content>
                     <v-stepper-step step="3">
                         More about you
-                        <small>How else will we know who you are</small>
+                        <small>
+                            Just so we know what to call you
+                        </small>
                     </v-stepper-step>
                     <v-stepper-content step="3">
-                        <form v-on:submit.prevent="verifyEmail()">
+                        <form v-on:submit.prevent="createUser()">
                             <v-layout row>
                                 <v-flex xs6>
                                     <v-text-field
@@ -119,11 +121,39 @@
                             <v-btn type="submit" primary light>Continue</v-btn>
                         </form>
                     </v-stepper-content>
-                    <v-stepper-step step="4">View setup instructions</v-stepper-step>
+                    <v-stepper-step step="4">
+                        Finish registration
+                        <small>
+                            And we are done!
+                        </small>
+                    </v-stepper-step>
                     <v-stepper-content step="4">
-                        <v-card class="grey lighten-1 z-depth-1 mb-5" height="200px"></v-card>
-                        <v-btn primary light @click.native="registerStep = 1">Continue</v-btn>
-                        <v-btn flat light>Cancel</v-btn>
+                        <div v-if="addUserSuccess">
+                            <i class="rg--success_icon material-icons accent-text-color">favorite</i>
+                            <span class="rg--success-title primary-text-color">
+                                Thank you for registering with 
+                                <span class="accent-text-color"> YOJNA </span>
+                            </span>
+                            <span class="rg--success-text primary-text-color">
+                                You can now 
+                                <router-link class="accent-text-color" to="/login">log-in</router-link>
+                                and start inviting your team members to 
+                                <span class="accent-text-color"> YOJNA </span>
+                            </span>
+                        </div>
+                        <div v-if="addUserFailure">
+                            <i class="rg--success_icon material-icons accent-text-color">sentiment_neutral</i>
+                            <span class="rg--error-title primary-text-color">
+                                Seems like user with email <span class="accent-text-color"> "{{u.email}}" </span> is already registered with 
+                                <span class="accent-text-color"> YOJNA </span>
+                            </span>
+                            <span class="rg--success-text primary-text-color">
+                                Please try to 
+                                <router-link class="accent-text-color" to="/login">log-in</router-link>
+                                using your password for 
+                                <span class="accent-text-color"> YOJNA </span>
+                            </span>
+                        </div>
                     </v-stepper-content>
                 </v-stepper>
             </div>
@@ -139,15 +169,35 @@
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.rg-content-heading {
+.rg--content-heading {
     font-size: 2rem;
     letter-spacing: 0.25rem;
 }
 
-.rg-container {
+.rg--container {
     width: 80%;
     height: 25rem;
     margin: auto;
+}
+
+i.rg--success_icon {
+    font-size: 10rem;
+    display: block;
+}
+
+span.rg--success-title {
+    font-size: 3rem;
+    display: block;
+}
+
+span.rg--success-text {
+    display: block;
+    font-size: 1rem;
+}
+
+span.rg--error-title {
+    font-size: 2rem;
+    display: block;
 }
 
 </style>
