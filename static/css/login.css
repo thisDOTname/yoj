@@ -120,13 +120,6 @@ body {
   box-sizing: border-box;
 }
 
-body {
-  background-color: #ddd;
-  min-height: 100vh;
-  font-size: 0.875em;
-  color: #666;
-}
-
 .wrapper {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -218,4 +211,3 @@ body {
     font-size: 2rem;
     letter-spacing: 0.25rem;
 }
-

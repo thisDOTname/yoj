@@ -1,4 +1,6 @@
 var mysql = require('mysql')
+var sqlString = require('sqlstring')
+
 const DB = mysql.createConnection({
   host: 'localhost',
   user: 'root',
@@ -9,7 +11,7 @@ const DB = mysql.createConnection({
 module.exports = {
   verifyEmail : function (req, res) {
     let email = req.query.e
-    DB.query('SELECT * FROM users where email = ?', [email], function (error, results, fields) {
+    DB.query(sqlString.format('SELECT * FROM users where email = ?', [email]), function (error, results, fields) {
       if (error) throw error
       console.log('DB RESPONSE :: ', typeof(results[0]), results)
       if(results.length) {

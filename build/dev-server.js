@@ -45,6 +45,9 @@ app.use('/api', authRoutes)
 let orgRoutes = require('../api/data/orgs/routes')
 app.use('/api', orgRoutes)
 
+let userRoutes = require('../api/data/users/routes')
+app.use('/api', userRoutes)
+
 let routes = require('../api/data/routes')
 app.use('/api', routes)
 

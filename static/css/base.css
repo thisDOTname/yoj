@@ -1,5 +1,9 @@
 @import 'https://fonts.googleapis.com/icon?family=Material+Icons';
 
+body {
+  background-color: #efefef;
+}
+
 .primary-color {
     background-color: #4CB5F5;
 }
@@ -21,28 +25,170 @@ section#out--section.fixed--section {
 }
 
 section#out--section {
-	background: #FFFFFF;
 	position: relative;
 	width: 100%;
 	height: 100vh;
 }
 
 section#out--section > header {
-	position: absolute;
-	z-index: 10;
-	width: 100%;
-	height: 100px;
-	text-align: center;
+    z-index: 10;
+    width: 100%;
+    text-align: left;
+    padding: 0.5rem 0 0.5rem 2rem;
+    background-color: #ffffff;
 }
 
 section#out--section header > h1, h4 {
     position: initial;
-    font-size: 1.5rem;
-    font-weight: 500;
-    letter-spacing: .4em;
-    margin-top: 20px;
+    font-size: 3rem;
+    font-weight: 700;
+    letter-spacing: 0.25em;
+    margin: 0;
 }
 
 section#out--section header > h4 {
-    font-size: 1rem;
+    font-size: 1.5rem;
+    line-height: 2rem;
+}
+
+.shell-divider {
+    margin: 1rem 0;
+    opacity: 0.54;
+}
+
+.shell-logo-text {
+    font-size: 2rem;
+    font-weight: 700;
+    letter-spacing: 0.25rem;
+}
+
+.loader {
+  display: inline-block;
+  width: 60px;
+  height: 60px;
+  position: absolute;
+  border: 0.5rem solid #FF420E;
+  animation: loader 2s infinite ease;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.loader-inner {
+  vertical-align: top;
+  display: inline-block;
+  width: 100%;
+  background-color: #fff;
+  animation: loader-inner 2s infinite ease-in;
+}
+
+@keyframes loader {
+  0% {
+    transform: rotate(0deg);
+  }
+  
+  25% {
+    transform: rotate(180deg);
+  }
+  
+  50% {
+    transform: rotate(180deg);
+  }
+  
+  75% {
+    transform: rotate(360deg);
+  }
+  
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes loader-inner {
+  0% {
+    height: 0%;
+  }
+  
+  25% {
+    height: 0%;
+  }
+  
+  50% {
+    height: 100%;
+  }
+  
+  75% {
+    height: 100%;
+  }
+  
+  100% {
+    height: 0%;
+  }
+}
+
+.out--bg {
+    background: url('../images/work.jpeg') no-repeat;
+    background-size: cover;
+}
+
+.front--bg {
+    background: url('../images/meet.jpeg') no-repeat;
+    background-size: cover;
+    filter: blur(5px);
+    -webkit-filter: blur(5px);
+}
+
+.lg-billboard-wrapper {
+    background: url(/static/img/plan.4ab28cf.jpg);
+    width: 100%;
+    background-size: cover;
+}
+
+.lg-main-wrapper {
+    display: flex;
+    height: 80vh;
+    margin-top: 10vh;
+}
+
+.lg-form-wrapper {
+  width: 60%;
+  padding: 10% 5%;
+}
+
+.shell-logo-text.shell-logo-left {
+    text-align: left;
+}
+
+.shell-logo-text.shell-logo-large {
+    font-size: 3rem;
+}
+
+.lg-billboard-text-wrapper {
+    background: #fff;
+    text-align: left;
+    color: #333;
+    padding: 1rem;
+    bottom: 25%;
+    position: absolute;
+    opacity: 0.84;
+    width: 60%;
+}
+
+.lg-billboard-title {
+    font-size: 3rem;
+}
+
+.lg-billboard-text {
+    font-size: 2rem;
+    padding-left: 1rem;
+}
+
+.rg-form-wrapper {
+  padding: 2%;
+  width: 64%;
+  overflow: auto;
+}
+
+.rg-billboard-text {
+  font-size: 1.5rem;
 }

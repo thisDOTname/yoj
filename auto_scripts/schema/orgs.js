@@ -7,14 +7,15 @@ const DB = mysql.createConnection({
 })
 
 const CREATE_ORGANISATIONS_TABLE = 'CREATE TABLE organisations ( \
-                            id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, \
-                            org_name VARCHAR(200) NOT NULL, \
-                            org_website VARCHAR(200), \
-                            org_desc VARCHAR(500), \
-                            created_by VARCHAR(200) NOT NULL, \
-                            created timestamp NOT NULL DEFAULT current_timestamp, \
-                            edited timestamp NOT NULL DEFAULT current_timestamp \
-                          );'
+                                      id INT NOT NULL AUTO_INCREMENT PRIMARY KEY, \
+                                      org_name VARCHAR(200) NOT NULL, \
+                                      org_alias VARCHAR(20) NOT NULL, \
+                                      org_website VARCHAR(200), \
+                                      org_desc VARCHAR(500), \
+                                      created_by VARCHAR(10) NOT NULL, \
+                                      created timestamp NOT NULL DEFAULT current_timestamp, \
+                                      edited timestamp NOT NULL DEFAULT current_timestamp \
+                                    );'
 
 module.exports = {
   migrate : function () {
