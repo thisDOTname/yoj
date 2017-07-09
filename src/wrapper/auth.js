@@ -1,6 +1,7 @@
 const VALIDATE_REGISTER_EMAIL = '/api/verifyEmail'
 const ADD_ORGANISATION = '/api/organisation/add'
 const ADD_USER = '/api/user/add'
+const DO_LOGIN = '/api/login'
 
 export default {
   methods: {
@@ -57,6 +58,24 @@ export default {
           resolve(response)
         }, (response) => {
           console.log('*** addOrganisation error -> ', response)
+          reject(response)
+        })
+      })
+    },
+    createUser (context, userData) {
+      return new Promise((resolve, reject) => {
+        context.$http.post(ADD_USER, userData).then(response => {
+          resolve(response.body)
+        }, (response) => {
+          reject(response)
+        })
+      })
+    },
+    doLogin (context, credentials) {
+      return new Promise((resolve, reject) => {
+        context.$http.post(DO_LOGIN, credentials).then(response => {
+          resolve(response.body)
+        }, (response) => {
           reject(response)
         })
       })

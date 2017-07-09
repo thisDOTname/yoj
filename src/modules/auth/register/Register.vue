@@ -183,4 +183,24 @@
     left: 17%;
 }
 
+i.rg--success_icon {
+    font-size: 10rem;
+    display: block;
+}
+
+span.rg--success-title {
+    font-size: 3rem;
+    display: block;
+}
+
+span.rg--success-text {
+    display: block;
+    font-size: 1rem;
+}
+
+span.rg--error-title {
+    font-size: 2rem;
+    display: block;
+}
+
 </style>

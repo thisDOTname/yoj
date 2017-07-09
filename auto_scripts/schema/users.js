@@ -11,7 +11,6 @@ const CREATE_USERS_TABLE = 'CREATE TABLE users ( \
                             first_name VARCHAR(100) NOT NULL, \
                             last_name VARCHAR(100) NOT NULL, \
                             email VARCHAR(200) NOT NULL, \
-                            username VARCHAR(25), \
                             password VARCHAR(100) NOT NULL, \
                             organisation VARCHAR(100), \
                             role VARCHAR(25), \
